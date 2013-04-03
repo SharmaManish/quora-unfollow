@@ -1,0 +1,44 @@
+{
+  "manifest_version": 2,
+
+  "name": "Quora Unfollow",
+  
+  "version": "1.0",
+
+  "content_scripts" : [
+  {
+	 "matches": [
+        "*://*.quora.com/*"
+      ],
+	 "js" : [ "js/jquery.js", "js/createTag.js" ],
+	 "all_frames" : true,
+	 "run_at" : "document_start"
+  },
+  {
+	"matches": [
+        "*://*.quora.com/*/followers"
+      ],
+	 "js" : [ "js/jquery.js", "js/FollowersList.js" ],
+	 "all_frames" : true,
+	 "run_at" : "document_start"
+  
+  }
+  ],
+  
+  "permissions": ["tabs", "http://*.quora.com/*"],
+  
+  "description": "Now see who has unfollowed you on quora",
+  
+  "icons": {
+   
+      "128": "images/icon128.png",
+      "16": "images/icon16.png",
+      "48": "images/icon48.png"
+	  
+   },
+  
+  "background": {
+    "scripts": ["js/jquery.js","js/background.js"]
+  }
+  
+}
